@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# check if argument was provided
+if [ $# -eq 0 ]; then
+    echo "No arguments supplied, please name the container you want to toggle between green and blue"
+    exit 1
+fi
+
+toggle_container="$1"
+container_green="${toggle_container}_green"
+container_blue="${toggle_container}_blue"
+
+echo "Will toggle $toggle_container from green to blue or vice versa..."
+
+if [ "$( docker container inspect -f '{{.State.Running}}' $container_blue 2> null )" == "true" ]; then
+    container_stop = $container_blue
+    container_start = $container_green
+elif [ "$( docker container inspect -f '{{.State.Running}}' $container_green 2> null)" == "true" ]; then
+    container_stop = $container_green
+    container_start = $container_blue
+else
+    echo "Neither $container_green, nor $container_blue is running, cannot toggle between them."
+    exit 1
+fi
+
+echo "Now stopping $container_stop..."
+# docker stop $container_stop
+echo "And starting $container_start..."
+# docker start $container_start
