@@ -1,7 +1,6 @@
 #! /bin/sh
-#
 
-# HowTo  
+# About  
 # As a simple way to keep private data out of public code
 # repositories, define the data you need as variables in a file called
 # config.sh in the same directory as the script and place that file in

@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 #
 # based on https://calomel.org/zfs_health_check_script.html
 # 
